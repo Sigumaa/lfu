@@ -21,8 +21,8 @@ func New(userName, apiKey string) *Client {
 	}
 }
 
-func buildURL(url, method, userName, apiKey string) string {
-	return fmt.Sprintf("%s2.0/?method=%s&user=%s&api_key=%s&format=json", url, method, userName, apiKey)
+func buildURL(url, method, userName, apiKey string, page int) string {
+	return fmt.Sprintf("%s2.0/?method=%s&user=%s&api_key=%s&page=%d&format=json", url, method, userName, apiKey, page)
 }
 
 func (c *Client) get(ctx context.Context, url string, result any) error {

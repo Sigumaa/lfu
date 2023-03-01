@@ -43,8 +43,8 @@ type User struct {
 	Type       string     `json:"type"`
 }
 
-func (c *Client) Friends(ctx context.Context) (*FriendsData, error) {
-	url := buildURL(c.baseURL, "user.getfriends", c.userName, c.apiKey)
+func (c *Client) Friends(ctx context.Context, page int) (*FriendsData, error) {
+	url := buildURL(c.baseURL, "user.getfriends", c.userName, c.apiKey, page)
 	var result FriendsData
 	err := c.get(ctx, url, &result)
 	if err != nil {
