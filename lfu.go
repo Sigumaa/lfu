@@ -7,6 +7,11 @@ import (
 	"net/http"
 )
 
+type Image struct {
+	Size string `json:"size"`
+	Text string `json:"#text"`
+}
+
 type Client struct {
 	baseURL  string
 	userName string

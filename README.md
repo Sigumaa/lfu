@@ -3,7 +3,7 @@
 https://www.last.fm/api
 
 - [x] user.getFriends
-- [ ] user.getInfo
+- [x] user.getInfo
 - [ ] user.getLovedTracks
 - [ ] user.getPersonalTags
 - [ ] user.getRecentTracks

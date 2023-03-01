@@ -19,28 +19,23 @@ type Attr struct {
 	PerPage    string `json:"perPage"`
 }
 
-type Image struct {
-	Size string `json:"size"`
-	Text string `json:"#text"`
+type User struct {
+	Name       string           `json:"name"`
+	Url        string           `json:"url"`
+	Country    string           `json:"country"`
+	Playlists  string           `json:"playlists"`
+	Playcount  string           `json:"playcount"`
+	Image      []Image          `json:"image"`
+	Registered FriendRegistered `json:"registered"`
+	Realname   string           `json:"realname"`
+	Subscriber string           `json:"subscriber"`
+	Bootstrap  string           `json:"bootstrap"`
+	Type       string           `json:"type"`
 }
 
-type Registered struct {
+type FriendRegistered struct {
 	Unixtime string `json:"unixtime"`
 	Text     string `json:"#text"`
-}
-
-type User struct {
-	Name       string     `json:"name"`
-	Url        string     `json:"url"`
-	Country    string     `json:"country"`
-	Playlists  string     `json:"playlists"`
-	Playcount  string     `json:"playcount"`
-	Image      []Image    `json:"image"`
-	Registered Registered `json:"registered"`
-	Realname   string     `json:"realname"`
-	Subscriber string     `json:"subscriber"`
-	Bootstrap  string     `json:"bootstrap"`
-	Type       string     `json:"type"`
 }
 
 func (c *Client) Friends(ctx context.Context, page int) (*FriendsData, error) {
