@@ -2,6 +2,10 @@
 
 https://www.last.fm/api
 
+```bash
+go get -u github.com/Sigumaa/lfu
+```
+
 - [x] user.getFriends
 - [x] user.getInfo
 - [ ] user.getLovedTracks
