@@ -7,18 +7,18 @@ type LovedTracksData struct {
 }
 
 type LovedTracks struct {
-	Track []Track `json:"track"`
-	Attr  Attr    `json:"@attr"`
+	Track []LovedTrack `json:"track"`
+	Attr  Attr         `json:"@attr"`
 }
 
-type Track struct {
-	Artist     Artist     `json:"artist"`
-	Date       Date       `json:"date"`
-	Mbid       string     `json:"mbid"`
-	URL        string     `json:"url"`
-	Name       string     `json:"name"`
-	Image      []Image    `json:"image"`
-	Streamable Streamable `json:"streamable"`
+type LovedTrack struct {
+	Artist     LovedTrackArtist `json:"artist"`
+	Date       Date             `json:"date"`
+	Mbid       string           `json:"mbid"`
+	URL        string           `json:"url"`
+	Name       string           `json:"name"`
+	Image      []Image          `json:"image"`
+	Streamable Streamable       `json:"streamable"`
 }
 
 type Streamable struct {
@@ -26,15 +26,10 @@ type Streamable struct {
 	Text      string `json:"#text"`
 }
 
-type Artist struct {
+type LovedTrackArtist struct {
 	URL  string `json:"url"`
 	Name string `json:"name"`
 	Mbid string `json:"mbid"`
-}
-
-type Date struct {
-	UTS  string `json:"uts"`
-	Text string `json:"#text"`
 }
 
 func (c *Client) LovedTracks(ctx context.Context, page int) (*LovedTracksData, error) {
