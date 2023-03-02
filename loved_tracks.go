@@ -21,11 +21,6 @@ type LovedTrack struct {
 	Streamable Streamable `json:"streamable"`
 }
 
-type Streamable struct {
-	Fulltrack string `json:"fulltrack"`
-	Text      string `json:"#text"`
-}
-
 func (c *Client) LovedTracks(ctx context.Context, page int) (*LovedTracksData, error) {
 	url := buildURL(c.baseURL, "user.getlovedtracks", c.userName, c.apiKey, page)
 	var result LovedTracksData

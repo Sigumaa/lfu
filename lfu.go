@@ -15,6 +15,11 @@ type Attr struct {
 	Total      string `json:"total"`
 }
 
+type Streamable struct {
+	Fulltrack string `json:"fulltrack"`
+	Text      string `json:"#text"`
+}
+
 type Image struct {
 	Size string `json:"size"`
 	Text string `json:"#text"`
