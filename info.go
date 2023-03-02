@@ -33,8 +33,7 @@ type InfoRegistered struct {
 func (c *Client) Info(ctx context.Context, page int) (*InfoData, error) {
 	url := buildURL(c.baseURL, "user.getinfo", c.userName, c.apiKey, page)
 	var result InfoData
-	err := c.get(ctx, url, &result)
-	if err != nil {
+	if err := c.get(ctx, url, &result); err != nil {
 		return nil, err
 	}
 	return &result, nil

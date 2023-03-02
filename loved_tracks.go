@@ -40,8 +40,7 @@ type Date struct {
 func (c *Client) LovedTracks(ctx context.Context, page int) (*LovedTracksData, error) {
 	url := buildURL(c.baseURL, "user.getlovedtracks", c.userName, c.apiKey, page)
 	var result LovedTracksData
-	err := c.get(ctx, url, &result)
-	if err != nil {
+	if err := c.get(ctx, url, &result); err != nil {
 		return nil, err
 	}
 	return &result, nil

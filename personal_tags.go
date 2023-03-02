@@ -35,8 +35,7 @@ type TagAttr struct {
 func (c *Client) PersonalTags(ctx context.Context, tag string, page int) (*PersonalTagsData, error) {
 	url := buildURL(c.baseURL, "user.getpersonaltags", c.userName, c.apiKey, page) + "&tag=" + tag + "&taggingtype=artist"
 	var result PersonalTagsData
-	err := c.get(ctx, url, &result)
-	if err != nil {
+	if err := c.get(ctx, url, &result); err != nil {
 		return nil, err
 	}
 	return &result, nil

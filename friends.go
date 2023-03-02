@@ -33,8 +33,7 @@ type FriendRegistered struct {
 func (c *Client) Friends(ctx context.Context, page int) (*FriendsData, error) {
 	url := buildURL(c.baseURL, "user.getfriends", c.userName, c.apiKey, page)
 	var result FriendsData
-	err := c.get(ctx, url, &result)
-	if err != nil {
+	if err := c.get(ctx, url, &result); err != nil {
 		return nil, err
 	}
 	return &result, nil
