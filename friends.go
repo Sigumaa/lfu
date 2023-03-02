@@ -13,7 +13,7 @@ type Friends struct {
 
 type User struct {
 	Name       string           `json:"name"`
-	Url        string           `json:"url"`
+	URL        string           `json:"url"`
 	Country    string           `json:"country"`
 	Playlists  string           `json:"playlists"`
 	Playcount  string           `json:"playcount"`

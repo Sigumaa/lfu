@@ -2,6 +2,10 @@ package lfu
 
 import "context"
 
+type InfoData struct {
+	User UserInfo `json:"user"`
+}
+
 type UserInfo struct {
 	Name        string         `json:"name"`
 	Age         string         `json:"age"`
@@ -17,12 +21,8 @@ type UserInfo struct {
 	Registered  InfoRegistered `json:"registered"`
 	Country     string         `json:"country"`
 	Gender      string         `json:"gender"`
-	Url         string         `json:"url"`
+	URL         string         `json:"url"`
 	Type        string         `json:"type"`
-}
-
-type InfoData struct {
-	User UserInfo `json:"user"`
 }
 
 type InfoRegistered struct {
