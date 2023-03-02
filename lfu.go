@@ -20,6 +20,11 @@ type Image struct {
 	Text string `json:"#text"`
 }
 
+type Date struct {
+	UTS  string `json:"uts"`
+	Text string `json:"#text"`
+}
+
 type Client struct {
 	baseURL  string
 	userName string
