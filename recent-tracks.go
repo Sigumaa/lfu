@@ -19,7 +19,7 @@ type RecentTrack struct {
 	Album      RecentTrackAlbum  `json:"album"`
 	Name       string            `json:"name"`
 	Attr       RecentTrackAttr   `json:"@attr,omitempty"`
-	Url        string            `json:"url"`
+	URL        string            `json:"url"`
 	Date       Date              `json:"date"`
 }
 

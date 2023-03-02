@@ -15,7 +15,7 @@ type TopAlbum struct {
 	Artist    Artist       `json:"artist"`
 	Image     []Image      `json:"image"`
 	Mbid      string       `json:"mbid"`
-	Url       string       `json:"url"`
+	URL       string       `json:"url"`
 	Playcount string       `json:"playcount"`
 	Attr      TopAlbumAttr `json:"@attr"`
 	Name      string       `json:"name"`
