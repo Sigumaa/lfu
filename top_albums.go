@@ -3,7 +3,7 @@ package lfu
 import "context"
 
 type TopAlbumsData struct {
-	Topalbums Topalbums `json:"topalbums"`
+	TopAlbums Topalbums `json:"topalbums"`
 }
 
 type Topalbums struct {
@@ -16,7 +16,7 @@ type TopAlbum struct {
 	Image     []Image      `json:"image"`
 	Mbid      string       `json:"mbid"`
 	URL       string       `json:"url"`
-	Playcount string       `json:"playcount"`
+	PlayCount string       `json:"playcount"`
 	Attr      TopAlbumAttr `json:"@attr"`
 	Name      string       `json:"name"`
 }

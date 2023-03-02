@@ -16,7 +16,7 @@ type TopArtist struct {
 	Image      []Image       `json:"image"`
 	Mbid       string        `json:"mbid"`
 	URL        string        `json:"url"`
-	Playcount  string        `json:"playcount"`
+	PlayCount  string        `json:"playcount"`
 	Attr       TopArtistAttr `json:"@attr"`
 	Name       string        `json:"name"`
 }

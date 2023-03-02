@@ -19,14 +19,14 @@ type User struct {
 	Playcount  string           `json:"playcount"`
 	Image      []Image          `json:"image"`
 	Registered FriendRegistered `json:"registered"`
-	Realname   string           `json:"realname"`
+	RealName   string           `json:"realname"`
 	Subscriber string           `json:"subscriber"`
 	Bootstrap  string           `json:"bootstrap"`
 	Type       string           `json:"type"`
 }
 
 type FriendRegistered struct {
-	Unixtime string `json:"unixtime"`
+	UnixTime string `json:"unixtime"`
 	Text     string `json:"#text"`
 }
 

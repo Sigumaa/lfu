@@ -14,7 +14,7 @@ go get -u github.com/Sigumaa/lfu
 - [x] user.getTopAlbums
 - [x] user.getTopArtists
 - [x] user.getTopTags
-- [ ] user.getTopTracks
+- [x] user.getTopTracks
 - [ ] user.getWeeklyAlbumChart
 - [ ] user.getWeeklyArtistChart
 - [ ] user.getWeeklyChartList
