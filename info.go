@@ -10,9 +10,9 @@ type UserInfo struct {
 	Name        string         `json:"name"`
 	Age         string         `json:"age"`
 	Subscriber  string         `json:"subscriber"`
-	Realname    string         `json:"realname"`
+	RealName    string         `json:"realname"`
 	Bootstrap   string         `json:"bootstrap"`
-	Playcount   string         `json:"playcount"`
+	PlayCount   string         `json:"playcount"`
 	ArtistCount string         `json:"artist_count"`
 	Playlists   string         `json:"playlists"`
 	TrackCount  string         `json:"track_count"`
@@ -26,7 +26,7 @@ type UserInfo struct {
 }
 
 type InfoRegistered struct {
-	Unixtime string `json:"unixtime"`
+	UnixTime string `json:"unixtime"`
 	Text     int    `json:"#text"`
 }
 

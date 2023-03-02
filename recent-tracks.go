@@ -3,7 +3,7 @@ package lfu
 import "context"
 
 type RecentTracksData struct {
-	Recenttracks RecentTracks `json:"recenttracks"`
+	RecentTracks RecentTracks `json:"recenttracks"`
 }
 
 type RecentTracks struct {
@@ -34,7 +34,7 @@ type RecentTrackAlbum struct {
 }
 
 type RecentTrackAttr struct {
-	Nowplaying string `json:"nowplaying"`
+	NowPlaying string `json:"nowplaying"`
 }
 
 func (c *Client) RecentTracks(ctx context.Context, page int) (*RecentTracksData, error) {

@@ -16,7 +16,7 @@ type Attr struct {
 }
 
 type Streamable struct {
-	Fulltrack string `json:"fulltrack"`
+	FullTrack string `json:"fulltrack"`
 	Text      string `json:"#text"`
 }
 

@@ -3,7 +3,7 @@ package lfu
 import "context"
 
 type TopTracksData struct {
-	Toptracks TopTracks `json:"toptracks"`
+	TopTracks TopTracks `json:"toptracks"`
 }
 
 type TopTracks struct {
@@ -20,7 +20,7 @@ type TopTrack struct {
 	Url        string       `json:"url"`
 	Duration   string       `json:"duration"`
 	Attr       TopTrackAttr `json:"@attr"`
-	Playcount  string       `json:"playcount"`
+	PlayCount  string       `json:"playcount"`
 }
 
 type TopTrackAttr struct {
