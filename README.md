@@ -9,7 +9,7 @@ go get -u github.com/Sigumaa/lfu
 - [x] user.getFriends
 - [x] user.getInfo
 - [x] user.getLovedTracks
-- [ ] user.getPersonalTags
+- [x] user.getPersonalTags
 - [ ] user.getRecentTracks
 - [ ] user.getTopAlbums
 - [ ] user.getTopArtists
