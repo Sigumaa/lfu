@@ -25,6 +25,12 @@ type Date struct {
 	Text string `json:"#text"`
 }
 
+type Artist struct {
+	URL  string `json:"url"`
+	Name string `json:"name"`
+	Mbid string `json:"mbid"`
+}
+
 type Client struct {
 	baseURL  string
 	userName string

@@ -18,7 +18,7 @@ type TagArtists struct {
 type TagArtist struct {
 	Name       string  `json:"name"`
 	Mbid       string  `json:"mbid"`
-	Url        string  `json:"url"`
+	URL        string  `json:"url"`
 	Streamable string  `json:"streamable"`
 	Image      []Image `json:"image"`
 }

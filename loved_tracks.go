@@ -12,24 +12,18 @@ type LovedTracks struct {
 }
 
 type LovedTrack struct {
-	Artist     LovedTrackArtist `json:"artist"`
-	Date       Date             `json:"date"`
-	Mbid       string           `json:"mbid"`
-	URL        string           `json:"url"`
-	Name       string           `json:"name"`
-	Image      []Image          `json:"image"`
-	Streamable Streamable       `json:"streamable"`
+	Artist     Artist     `json:"artist"`
+	Date       Date       `json:"date"`
+	Mbid       string     `json:"mbid"`
+	URL        string     `json:"url"`
+	Name       string     `json:"name"`
+	Image      []Image    `json:"image"`
+	Streamable Streamable `json:"streamable"`
 }
 
 type Streamable struct {
 	Fulltrack string `json:"fulltrack"`
 	Text      string `json:"#text"`
-}
-
-type LovedTrackArtist struct {
-	URL  string `json:"url"`
-	Name string `json:"name"`
-	Mbid string `json:"mbid"`
 }
 
 func (c *Client) LovedTracks(ctx context.Context, page int) (*LovedTracksData, error) {
