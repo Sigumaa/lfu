@@ -7,6 +7,14 @@ import (
 	"net/http"
 )
 
+type Attr struct {
+	User       string `json:"user"`
+	TotalPages string `json:"totalPages"`
+	Page       string `json:"page"`
+	PerPage    string `json:"perPage"`
+	Total      string `json:"total"`
+}
+
 type Image struct {
 	Size string `json:"size"`
 	Text string `json:"#text"`

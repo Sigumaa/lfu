@@ -11,14 +11,6 @@ type Friends struct {
 	User []User `json:"user"`
 }
 
-type Attr struct {
-	User       string `json:"user"`
-	TotalPages string `json:"totalPages"`
-	Page       string `json:"page"`
-	Total      string `json:"total"`
-	PerPage    string `json:"perPage"`
-}
-
 type User struct {
 	Name       string           `json:"name"`
 	Url        string           `json:"url"`
