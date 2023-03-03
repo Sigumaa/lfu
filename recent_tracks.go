@@ -37,8 +37,8 @@ type RecentTrackAttr struct {
 	NowPlaying string `json:"nowplaying"`
 }
 
-func (c *Client) RecentTracks(ctx context.Context, page int) (*RecentTracksData, error) {
-	url := buildURL(c.baseURL, "user.getrecenttracks", c.userName, c.apiKey, page)
+func (c *Client) RecentTracks(ctx context.Context) (*RecentTracksData, error) {
+	url := buildURL(c.baseURL, "user.getrecenttracks", c.userName, c.apiKey)
 	var result RecentTracksData
 	if err := c.get(ctx, url, &result); err != nil {
 		return nil, err

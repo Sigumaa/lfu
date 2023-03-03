@@ -21,8 +21,8 @@ type LovedTrack struct {
 	Streamable Streamable `json:"streamable"`
 }
 
-func (c *Client) LovedTracks(ctx context.Context, page int) (*LovedTracksData, error) {
-	url := buildURL(c.baseURL, "user.getlovedtracks", c.userName, c.apiKey, page)
+func (c *Client) LovedTracks(ctx context.Context) (*LovedTracksData, error) {
+	url := buildURL(c.baseURL, "user.getlovedtracks", c.userName, c.apiKey)
 	var result LovedTracksData
 	if err := c.get(ctx, url, &result); err != nil {
 		return nil, err

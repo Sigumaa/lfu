@@ -23,8 +23,8 @@ type TopTrack struct {
 	PlayCount  string     `json:"playcount"`
 }
 
-func (c *Client) TopTracks(ctx context.Context, page int) (*TopTracksData, error) {
-	url := buildURL(c.baseURL, "user.gettoptracks", c.userName, c.apiKey, page)
+func (c *Client) TopTracks(ctx context.Context) (*TopTracksData, error) {
+	url := buildURL(c.baseURL, "user.gettoptracks", c.userName, c.apiKey)
 	var result TopTracksData
 	if err := c.get(ctx, url, &result); err != nil {
 		return nil, err

@@ -32,8 +32,8 @@ type TagAttr struct {
 	Total      string `json:"total"`
 }
 
-func (c *Client) PersonalTags(ctx context.Context, tag string, page int) (*PersonalTagsData, error) {
-	url := buildURL(c.baseURL, "user.getpersonaltags", c.userName, c.apiKey, page) + "&tag=" + tag + "&taggingtype=artist"
+func (c *Client) PersonalTags(ctx context.Context, tag string) (*PersonalTagsData, error) {
+	url := buildURL(c.baseURL, "user.getpersonaltags", c.userName, c.apiKey) + "&tag=" + tag + "&taggingtype=artist"
 	var result PersonalTagsData
 	if err := c.get(ctx, url, &result); err != nil {
 		return nil, err

@@ -30,8 +30,8 @@ type InfoRegistered struct {
 	Text     int    `json:"#text"`
 }
 
-func (c *Client) Info(ctx context.Context, page int) (*InfoData, error) {
-	url := buildURL(c.baseURL, "user.getinfo", c.userName, c.apiKey, page)
+func (c *Client) Info(ctx context.Context) (*InfoData, error) {
+	url := buildURL(c.baseURL, "user.getinfo", c.userName, c.apiKey)
 	var result InfoData
 	if err := c.get(ctx, url, &result); err != nil {
 		return nil, err

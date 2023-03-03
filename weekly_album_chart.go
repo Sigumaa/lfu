@@ -20,8 +20,8 @@ type WeeklyAlbum struct {
 	PlayCount string      `json:"playcount"`
 }
 
-func (c *Client) WeeklyAlbumChart(ctx context.Context, page int) (*WeeklyAlbumChartData, error) {
-	url := buildURL(c.baseURL, "user.getweeklyalbumchart", c.userName, c.apiKey, page)
+func (c *Client) WeeklyAlbumChart(ctx context.Context) (*WeeklyAlbumChartData, error) {
+	url := buildURL(c.baseURL, "user.getweeklyalbumchart", c.userName, c.apiKey)
 	var result WeeklyAlbumChartData
 	if err := c.get(ctx, url, &result); err != nil {
 		return nil, err

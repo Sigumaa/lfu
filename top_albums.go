@@ -21,8 +21,8 @@ type TopAlbum struct {
 	Name      string   `json:"name"`
 }
 
-func (c *Client) TopAlbums(ctx context.Context, page int) (*TopAlbumsData, error) {
-	url := buildURL(c.baseURL, "user.gettopalbums", c.userName, c.apiKey, page)
+func (c *Client) TopAlbums(ctx context.Context) (*TopAlbumsData, error) {
+	url := buildURL(c.baseURL, "user.gettopalbums", c.userName, c.apiKey)
 	var result TopAlbumsData
 	if err := c.get(ctx, url, &result); err != nil {
 		return nil, err

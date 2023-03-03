@@ -30,8 +30,8 @@ type FriendRegistered struct {
 	Text     string `json:"#text"`
 }
 
-func (c *Client) Friends(ctx context.Context, page int) (*FriendsData, error) {
-	url := buildURL(c.baseURL, "user.getfriends", c.userName, c.apiKey, page)
+func (c *Client) Friends(ctx context.Context) (*FriendsData, error) {
+	url := buildURL(c.baseURL, "user.getfriends", c.userName, c.apiKey)
 	var result FriendsData
 	if err := c.get(ctx, url, &result); err != nil {
 		return nil, err
