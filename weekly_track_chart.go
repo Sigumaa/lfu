@@ -21,7 +21,7 @@ type WeeklyTrack struct {
 	Artist    TrackArtist `json:"artist"`
 	Image     []Image     `json:"image"`
 	Mbid      string      `json:"mbid"`
-	Url       string      `json:"url"`
+	URL       string      `json:"url"`
 	Name      string      `json:"name"`
 	Attr      TrackAttr   `json:"@attr"`
 	PlayCount string      `json:"playcount"`
