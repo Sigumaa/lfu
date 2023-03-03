@@ -21,8 +21,13 @@ type TopTag struct {
 	URL   string `json:"url"`
 }
 
-func (c *Client) TopTags(ctx context.Context) (*TopTagsData, error) {
+// TopTags Get the top tags used by this user.
+// Supported options:  limit
+func (c *Client) TopTags(ctx context.Context, opts ...RequestOption) (*TopTagsData, error) {
 	url := buildURL(c.baseURL, "user.gettoptags", c.userName, c.apiKey)
+	if params := processOptions(opts...).urlParams.Encode(); params != "" {
+		url += "&" + params
+	}
 	var result TopTagsData
 	if err := c.get(ctx, url, &result); err != nil {
 		return nil, err
