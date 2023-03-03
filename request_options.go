@@ -11,6 +11,23 @@ type requestOptions struct {
 	urlParams url.Values
 }
 
+type Range string
+
+const (
+	PeriodOverall Range = "overall"
+	Period7Day    Range = "7day"
+	Period1Month  Range = "1month"
+	Period3Month  Range = "3month"
+	Period6Month  Range = "6month"
+	Period12Month Range = "12month"
+)
+
+func Period(period Range) RequestOption {
+	return func(o *requestOptions) {
+		o.urlParams.Set("period", string(period))
+	}
+}
+
 func Page(page int) RequestOption {
 	return func(o *requestOptions) {
 		o.urlParams.Set("page", strconv.Itoa(page))
