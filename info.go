@@ -30,6 +30,7 @@ type InfoRegistered struct {
 	Text     int    `json:"#text"`
 }
 
+// Info Get information about a user profile.
 func (c *Client) Info(ctx context.Context) (*InfoData, error) {
 	url := buildURL(c.baseURL, "user.getinfo", c.userName, c.apiKey)
 	var result InfoData

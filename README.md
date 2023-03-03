@@ -22,8 +22,8 @@ go get -u github.com/Sigumaa/lfu
 
 ### TODO
 Corresponding Optional Params
-- [ ] user.getFriends
-- [ ] user.getInfo
+- [x] user.getFriends
+- [x] user.getInfo
 - [ ] user.getLovedTracks
 - [ ] user.getPersonalTags
 - [ ] user.getRecentTracks
