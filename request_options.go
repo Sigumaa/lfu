@@ -17,6 +17,12 @@ func Page(page int) RequestOption {
 	}
 }
 
+func Limit(limit int) RequestOption {
+	return func(o *requestOptions) {
+		o.urlParams.Set("limit", strconv.Itoa(limit))
+	}
+}
+
 func processOptions(opts ...RequestOption) requestOptions {
 	o := requestOptions{
 		urlParams: url.Values{},
