@@ -7,33 +7,18 @@ type WeeklyTrackChartData struct {
 }
 
 type WeeklyTrackChart struct {
-	Track []WeeklyTrack        `json:"track"`
-	Attr  WeeklyTrackChartAttr `json:"@attr"`
-}
-
-type WeeklyTrackChartAttr struct {
-	From string `json:"from"`
-	User string `json:"user"`
-	To   string `json:"to"`
+	Track []WeeklyTrack `json:"track"`
+	Attr  ChartAttr     `json:"@attr"`
 }
 
 type WeeklyTrack struct {
-	Artist    TrackArtist `json:"artist"`
+	Artist    ChartArtist `json:"artist"`
 	Image     []Image     `json:"image"`
 	Mbid      string      `json:"mbid"`
 	URL       string      `json:"url"`
 	Name      string      `json:"name"`
-	Attr      TrackAttr   `json:"@attr"`
+	Attr      RankAttr    `json:"@attr"`
 	PlayCount string      `json:"playcount"`
-}
-
-type TrackAttr struct {
-	Rank string `json:"rank"`
-}
-
-type TrackArtist struct {
-	Mbid string `json:"mbid"`
-	Text string `json:"#text"`
 }
 
 func (c *Client) WeeklyTrackChart(ctx context.Context, page int) (*WeeklyTrackChartData, error) {

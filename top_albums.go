@@ -12,17 +12,13 @@ type Topalbums struct {
 }
 
 type TopAlbum struct {
-	Artist    Artist       `json:"artist"`
-	Image     []Image      `json:"image"`
-	Mbid      string       `json:"mbid"`
-	URL       string       `json:"url"`
-	PlayCount string       `json:"playcount"`
-	Attr      TopAlbumAttr `json:"@attr"`
-	Name      string       `json:"name"`
-}
-
-type TopAlbumAttr struct {
-	Rank string `json:"rank"`
+	Artist    Artist   `json:"artist"`
+	Image     []Image  `json:"image"`
+	Mbid      string   `json:"mbid"`
+	URL       string   `json:"url"`
+	PlayCount string   `json:"playcount"`
+	Attr      RankAttr `json:"@attr"`
+	Name      string   `json:"name"`
 }
 
 func (c *Client) TopAlbums(ctx context.Context, page int) (*TopAlbumsData, error) {

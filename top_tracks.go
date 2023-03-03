@@ -12,19 +12,15 @@ type TopTracks struct {
 }
 
 type TopTrack struct {
-	Streamable Streamable   `json:"streamable"`
-	Mbid       string       `json:"mbid"`
-	Name       string       `json:"name"`
-	Image      []Image      `json:"image"`
-	Artist     Artist       `json:"artist"`
-	Url        string       `json:"url"`
-	Duration   string       `json:"duration"`
-	Attr       TopTrackAttr `json:"@attr"`
-	PlayCount  string       `json:"playcount"`
-}
-
-type TopTrackAttr struct {
-	Rank string `json:"rank"`
+	Streamable Streamable `json:"streamable"`
+	Mbid       string     `json:"mbid"`
+	Name       string     `json:"name"`
+	Image      []Image    `json:"image"`
+	Artist     Artist     `json:"artist"`
+	Url        string     `json:"url"`
+	Duration   string     `json:"duration"`
+	Attr       RankAttr   `json:"@attr"`
+	PlayCount  string     `json:"playcount"`
 }
 
 func (c *Client) TopTracks(ctx context.Context, page int) (*TopTracksData, error) {

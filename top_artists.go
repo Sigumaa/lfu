@@ -12,17 +12,13 @@ type TopArtists struct {
 }
 
 type TopArtist struct {
-	Streamable string        `json:"streamable"`
-	Image      []Image       `json:"image"`
-	Mbid       string        `json:"mbid"`
-	URL        string        `json:"url"`
-	PlayCount  string        `json:"playcount"`
-	Attr       TopArtistAttr `json:"@attr"`
-	Name       string        `json:"name"`
-}
-
-type TopArtistAttr struct {
-	Rank string `json:"rank"`
+	Streamable string   `json:"streamable"`
+	Image      []Image  `json:"image"`
+	Mbid       string   `json:"mbid"`
+	URL        string   `json:"url"`
+	PlayCount  string   `json:"playcount"`
+	Attr       RankAttr `json:"@attr"`
+	Name       string   `json:"name"`
 }
 
 func (c *Client) TopArtists(ctx context.Context, page int) (*TopArtistsData, error) {

@@ -7,32 +7,17 @@ type WeeklyAlbumChartData struct {
 }
 
 type WeeklyAlbumChart struct {
-	Album []WeeklyAlbum        `json:"album"`
-	Attr  WeeklyAlbumChartAttr `json:"@attr"`
-}
-
-type WeeklyAlbumChartAttr struct {
-	From string `json:"from"`
-	User string `json:"user"`
-	To   string `json:"to"`
+	Album []WeeklyAlbum `json:"album"`
+	Attr  ChartAttr     `json:"@attr"`
 }
 
 type WeeklyAlbum struct {
-	Artist    AlbumArtist `json:"artist"`
+	Artist    ChartArtist `json:"artist"`
 	Mbid      string      `json:"mbid"`
 	URL       string      `json:"url"`
 	Name      string      `json:"name"`
-	Attr      AlbumAttr   `json:"@attr"`
+	Attr      RankAttr    `json:"@attr"`
 	PlayCount string      `json:"playcount"`
-}
-
-type AlbumAttr struct {
-	Rank string `json:"rank"`
-}
-
-type AlbumArtist struct {
-	Mbid string `json:"mbid"`
-	Text string `json:"#text"`
 }
 
 func (c *Client) WeeklyAlbumChart(ctx context.Context, page int) (*WeeklyAlbumChartData, error) {
