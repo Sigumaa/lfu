@@ -21,6 +21,7 @@ type WeeklyChart struct {
 	To   string `json:"to"`
 }
 
+// WeeklyChartList Get a list of available charts for this user, expressed as date ranges which can be sent to the chart services.
 func (c *Client) WeeklyChartList(ctx context.Context) (*WeeklyChartListData, error) {
 	url := buildURL(c.baseURL, "user.getweeklychartlist", c.userName, c.apiKey)
 	var result WeeklyChartListData
