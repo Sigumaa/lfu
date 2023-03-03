@@ -34,4 +34,4 @@ Corresponding Optional Params
 - [x] user.getWeeklyAlbumChart
 - [x] user.getWeeklyArtistChart
 - [x] user.getWeeklyChartList
-- [ ] user.getWeeklyTrackChart
+- [x] user.getWeeklyTrackChart
