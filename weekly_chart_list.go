@@ -22,7 +22,7 @@ type WeeklyChart struct {
 }
 
 func (c *Client) WeeklyChartList(ctx context.Context) (*WeeklyChartListData, error) {
-	url := buildURL(c.baseURL, "user.getweeklychartlist", c.userName, c.apiKey, 1)
+	url := buildURL(c.baseURL, "user.getweeklychartlist", c.userName, c.apiKey)
 	var result WeeklyChartListData
 	if err := c.get(ctx, url, &result); err != nil {
 		return nil, err
