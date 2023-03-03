@@ -31,7 +31,7 @@ Corresponding Optional Params
 - [x] user.getTopArtists
 - [x] user.getTopTags
 - [x] user.getTopTracks
-- [ ] user.getWeeklyAlbumChart
+- [x] user.getWeeklyAlbumChart
 - [ ] user.getWeeklyArtistChart
 - [ ] user.getWeeklyChartList
 - [ ] user.getWeeklyTrackChart
