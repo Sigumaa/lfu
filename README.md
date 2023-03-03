@@ -15,10 +15,10 @@ go get -u github.com/Sigumaa/lfu
 - [x] user.getTopArtists
 - [x] user.getTopTags
 - [x] user.getTopTracks
-- [ ] user.getWeeklyAlbumChart
-- [ ] user.getWeeklyArtistChart
-- [ ] user.getWeeklyChartList
-- [ ] user.getWeeklyTrackChart
+- [x] user.getWeeklyAlbumChart
+- [x] user.getWeeklyArtistChart
+- [x] user.getWeeklyChartList
+- [x] user.getWeeklyTrackChart
 
 ### TODO
 Corresponding Optional Params
