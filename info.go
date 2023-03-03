@@ -31,6 +31,7 @@ type InfoRegistered struct {
 }
 
 // Info Get information about a user profile.
+// The last fm api documentation says user (Optional), but it is a lie!
 func (c *Client) Info(ctx context.Context) (*InfoData, error) {
 	url := buildURL(c.baseURL, "user.getinfo", c.userName, c.apiKey)
 	var result InfoData
