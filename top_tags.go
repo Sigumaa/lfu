@@ -11,14 +11,14 @@ type TopTags struct {
 	Attr TopTagsAttr `json:"@attr"`
 }
 
+type TopTagsAttr struct {
+	User string `json:"user"`
+}
+
 type TopTag struct {
 	Name  string `json:"name"`
 	Count string `json:"count"`
 	URL   string `json:"url"`
-}
-
-type TopTagsAttr struct {
-	User string `json:"user"`
 }
 
 func (c *Client) TopTags(ctx context.Context, page int) (*TopTagsData, error) {

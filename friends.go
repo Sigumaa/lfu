@@ -16,7 +16,7 @@ type User struct {
 	URL        string           `json:"url"`
 	Country    string           `json:"country"`
 	Playlists  string           `json:"playlists"`
-	Playcount  string           `json:"playcount"`
+	PlayCount  string           `json:"playcount"`
 	Image      []Image          `json:"image"`
 	Registered FriendRegistered `json:"registered"`
 	RealName   string           `json:"realname"`

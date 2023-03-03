@@ -15,6 +15,16 @@ type Attr struct {
 	Total      string `json:"total"`
 }
 
+type RankAttr struct {
+	Rank string `json:"rank"`
+}
+
+type ChartAttr struct {
+	From string `json:"from"`
+	User string `json:"user"`
+	To   string `json:"to"`
+}
+
 type Streamable struct {
 	FullTrack string `json:"fulltrack"`
 	Text      string `json:"#text"`
@@ -34,6 +44,11 @@ type Artist struct {
 	URL  string `json:"url"`
 	Name string `json:"name"`
 	Mbid string `json:"mbid"`
+}
+
+type ChartArtist struct {
+	Mbid string `json:"mbid"`
+	Text string `json:"#text"`
 }
 
 type Client struct {
