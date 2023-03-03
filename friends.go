@@ -1,6 +1,8 @@
 package lfu
 
-import "context"
+import (
+	"context"
+)
 
 type FriendsData struct {
 	Friends Friends `json:"friends"`
@@ -30,8 +32,13 @@ type FriendRegistered struct {
 	Text     string `json:"#text"`
 }
 
-func (c *Client) Friends(ctx context.Context, page int) (*FriendsData, error) {
-	url := buildURL(c.baseURL, "user.getfriends", c.userName, c.apiKey, page)
+// Friends Get a list of the user's friends on Last.fm.
+// Supported options:  limit, page
+func (c *Client) Friends(ctx context.Context, opts ...RequestOption) (*FriendsData, error) {
+	url := buildURL(c.baseURL, "user.getfriends", c.userName, c.apiKey)
+	if params := processOptions(opts...).urlParams.Encode(); params != "" {
+		url += "&" + params
+	}
 	var result FriendsData
 	if err := c.get(ctx, url, &result); err != nil {
 		return nil, err

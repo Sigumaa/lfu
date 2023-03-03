@@ -23,8 +23,13 @@ type TopTrack struct {
 	PlayCount  string     `json:"playcount"`
 }
 
-func (c *Client) TopTracks(ctx context.Context, page int) (*TopTracksData, error) {
-	url := buildURL(c.baseURL, "user.gettoptracks", c.userName, c.apiKey, page)
+// TopTracks Get the top tracks listened to by a user. You can stipulate a time period. Sends the overall chart by default.
+// Supported options:  limit, page, period
+func (c *Client) TopTracks(ctx context.Context, opts ...RequestOption) (*TopTracksData, error) {
+	url := buildURL(c.baseURL, "user.gettoptracks", c.userName, c.apiKey)
+	if params := processOptions(opts...).urlParams.Encode(); params != "" {
+		url += "&" + params
+	}
 	var result TopTracksData
 	if err := c.get(ctx, url, &result); err != nil {
 		return nil, err

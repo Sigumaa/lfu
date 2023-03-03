@@ -21,8 +21,13 @@ type TopAlbum struct {
 	Name      string   `json:"name"`
 }
 
-func (c *Client) TopAlbums(ctx context.Context, page int) (*TopAlbumsData, error) {
-	url := buildURL(c.baseURL, "user.gettopalbums", c.userName, c.apiKey, page)
+// TopAlbums Get the top albums listened to by a user. You can stipulate a time period. Sends the overall chart by default.
+// Supported options:  limit,page,period
+func (c *Client) TopAlbums(ctx context.Context, opts ...RequestOption) (*TopAlbumsData, error) {
+	url := buildURL(c.baseURL, "user.gettopalbums", c.userName, c.apiKey)
+	if params := processOptions(opts...).urlParams.Encode(); params != "" {
+		url += "&" + params
+	}
 	var result TopAlbumsData
 	if err := c.get(ctx, url, &result); err != nil {
 		return nil, err
