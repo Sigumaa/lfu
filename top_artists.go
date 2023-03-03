@@ -21,8 +21,13 @@ type TopArtist struct {
 	Name       string   `json:"name"`
 }
 
-func (c *Client) TopArtists(ctx context.Context) (*TopArtistsData, error) {
+// TopArtists Get the top artists listened to by a user. You can stipulate a time period. Sends the overall chart by default.
+// Supported options:  limit, page, period
+func (c *Client) TopArtists(ctx context.Context, opts ...RequestOption) (*TopArtistsData, error) {
 	url := buildURL(c.baseURL, "user.gettopartists", c.userName, c.apiKey)
+	if params := processOptions(opts...).urlParams.Encode(); params != "" {
+		url += "&" + params
+	}
 	var result TopArtistsData
 	if err := c.get(ctx, url, &result); err != nil {
 		return nil, err

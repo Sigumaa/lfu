@@ -28,7 +28,7 @@ Corresponding Optional Params
 - [x] user.getPersonalTags
 - [x] user.getRecentTracks
 - [x] user.getTopAlbums
-- [ ] user.getTopArtists
+- [x] user.getTopArtists
 - [ ] user.getTopTags
 - [ ] user.getTopTracks
 - [ ] user.getWeeklyAlbumChart
