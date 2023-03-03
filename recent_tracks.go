@@ -37,8 +37,13 @@ type RecentTrackAttr struct {
 	NowPlaying string `json:"nowplaying"`
 }
 
-func (c *Client) RecentTracks(ctx context.Context) (*RecentTracksData, error) {
+// RecentTracks Get a list of the recent tracks listened to by this user. Also includes the currently playing track with the nowplaying="true" attribute if the user is currently listening.
+// Supported options:  limit, page, from, extended, to
+func (c *Client) RecentTracks(ctx context.Context, opts ...RequestOption) (*RecentTracksData, error) {
 	url := buildURL(c.baseURL, "user.getrecenttracks", c.userName, c.apiKey)
+	if params := processOptions(opts...).urlParams.Encode(); params != "" {
+		url += "&" + params
+	}
 	var result RecentTracksData
 	if err := c.get(ctx, url, &result); err != nil {
 		return nil, err

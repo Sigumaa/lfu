@@ -23,6 +23,28 @@ func Limit(limit int) RequestOption {
 	}
 }
 
+func From(from int) RequestOption {
+	return func(o *requestOptions) {
+		o.urlParams.Set("from", strconv.Itoa(from))
+	}
+}
+
+func To(to int) RequestOption {
+	return func(o *requestOptions) {
+		o.urlParams.Set("to", strconv.Itoa(to))
+	}
+}
+
+func Extended(extended bool) RequestOption {
+	e := "0"
+	if extended {
+		e = "1"
+	}
+	return func(o *requestOptions) {
+		o.urlParams.Set("extended", e)
+	}
+}
+
 func processOptions(opts ...RequestOption) requestOptions {
 	o := requestOptions{
 		urlParams: url.Values{},
