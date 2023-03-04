@@ -40,15 +40,35 @@ func main() {
 	key := os.Getenv("API_KEY")
 	
 	client := lfu.New(name, key)
-	topTracks, err := client.TopTracks(context.TODO(), lfu.Limit(1))
-	if err != nil {
-		log.Fatal(err)
-	}
+	topTracks, _ := client.TopTracks(context.TODO(), lfu.Limit(1))
 	
 	// This is planned to become more user-friendly in a future update.
 	log.Printf("The track you have played the most is %s.", topTracks.TopTracks.Track[0].Name)
 }
 
+```
+
+## Example
+
+```go
+package main
+
+import (
+	"context"
+	"log"
+	"os"
+
+	"github.com/Sigumaa/lfu"
+)
+
+func main() {
+	name := os.Getenv("USER_NAME")
+	key := os.Getenv("API_KEY")
+
+	client := lfu.New(name, key)
+	track, _ := client.NowPlayingTrack(context.TODO())
+	log.Printf("Now playing: %s - %s", track.Name, track.ArtistName())
+}
 ```
 
 
