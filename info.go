@@ -97,6 +97,7 @@ func (i *InfoData) Image() []Image {
 }
 
 // ImageURL returns the image url of the user.
+// The index must be in the range [0, 4). small, medium, large, extralarge
 func (i *InfoData) ImageURL(size imageSize) string {
 	return i.User.Image[size].Text
 }
