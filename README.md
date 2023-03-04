@@ -71,7 +71,7 @@ func main() {
 more methods
 
 - [x] user.getFriends
-- [ ] user.getInfo
+- [x] user.getInfo
 - [ ] user.getLovedTracks
 - [ ] user.getPersonalTags
 - [ ] user.getRecentTracks
