@@ -3,8 +3,14 @@ package lfu
 import (
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"net/http"
+)
+
+var (
+	// ErrOutOfBounds is returned when the index is out of bounds.
+	ErrOutOfBounds = errors.New("index out of bounds")
 )
 
 type Attr struct {

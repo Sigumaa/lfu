@@ -2,12 +2,6 @@ package lfu
 
 import (
 	"context"
-	"errors"
-)
-
-var (
-	// ErrOutOfBounds is returned when the index is out of bounds.
-	ErrOutOfBounds = errors.New("index out of bounds")
 )
 
 type FriendsData struct {
@@ -61,7 +55,7 @@ func (f *FriendsData) Len() int {
 // The index must be in the range [0, f.Len()).
 func (f *FriendsData) Name(index int) (string, error) {
 	c := index
-	if c >= f.Len() {
+	if c < 0 || c >= f.Len() {
 		return "", ErrOutOfBounds
 	}
 	return f.Friends.User[c].Name, nil
@@ -71,7 +65,7 @@ func (f *FriendsData) Name(index int) (string, error) {
 // The index must be in the range [0, f.Len()).
 func (f *FriendsData) URL(index int) (string, error) {
 	c := index
-	if c >= f.Len() {
+	if c < 0 || c >= f.Len() {
 		return "", ErrOutOfBounds
 	}
 	return f.Friends.User[c].URL, nil
@@ -81,7 +75,7 @@ func (f *FriendsData) URL(index int) (string, error) {
 // The index must be in the range [0, f.Len()).
 func (f *FriendsData) Country(index int) (string, error) {
 	c := index
-	if c >= f.Len() {
+	if c < 0 || c >= f.Len() {
 		return "", ErrOutOfBounds
 	}
 	return f.Friends.User[c].Country, nil
@@ -91,7 +85,7 @@ func (f *FriendsData) Country(index int) (string, error) {
 // The index must be in the range [0, f.Len()).
 func (f *FriendsData) Playlists(index int) (string, error) {
 	c := index
-	if c >= f.Len() {
+	if c < 0 || c >= f.Len() {
 		return "", ErrOutOfBounds
 	}
 	return f.Friends.User[c].Playlists, nil
@@ -101,7 +95,7 @@ func (f *FriendsData) Playlists(index int) (string, error) {
 // The index must be in the range [0, f.Len()).
 func (f *FriendsData) PlayCount(index int) (string, error) {
 	c := index
-	if c >= f.Len() {
+	if c < 0 || c >= f.Len() {
 		return "", ErrOutOfBounds
 	}
 	return f.Friends.User[c].PlayCount, nil
@@ -111,7 +105,7 @@ func (f *FriendsData) PlayCount(index int) (string, error) {
 // The index must be in the range [0, f.Len()).
 func (f *FriendsData) Image(index int) ([]Image, error) {
 	c := index
-	if c >= f.Len() {
+	if c < 0 || c >= f.Len() {
 		return nil, ErrOutOfBounds
 	}
 	return f.Friends.User[c].Image, nil
@@ -121,7 +115,7 @@ func (f *FriendsData) Image(index int) ([]Image, error) {
 // The index must be in the range [0, 4). small, medium, large, extralarge
 func (f *FriendsData) ImageURL(index int, size imageSize) (string, error) {
 	c := index
-	if c >= f.Len() {
+	if c < 0 || c >= f.Len() {
 		return "", ErrOutOfBounds
 	}
 	return f.Friends.User[c].Image[size].Text, nil
@@ -131,7 +125,7 @@ func (f *FriendsData) ImageURL(index int, size imageSize) (string, error) {
 // The index must be in the range [0, f.Len()).
 func (f *FriendsData) Registered(index int) (FriendRegistered, error) {
 	c := index
-	if c >= f.Len() {
+	if c < 0 || c >= f.Len() {
 		return FriendRegistered{}, ErrOutOfBounds
 	}
 	return f.Friends.User[c].Registered, nil
@@ -141,7 +135,7 @@ func (f *FriendsData) Registered(index int) (FriendRegistered, error) {
 // The index must be in the range [0, f.Len()).
 func (f *FriendsData) RegisteredUnixTime(index int) (string, error) {
 	c := index
-	if c >= f.Len() {
+	if c < 0 || c >= f.Len() {
 		return "", ErrOutOfBounds
 	}
 	return f.Friends.User[c].Registered.UnixTime, nil
@@ -151,7 +145,7 @@ func (f *FriendsData) RegisteredUnixTime(index int) (string, error) {
 // The index must be in the range [0, f.Len()).
 func (f *FriendsData) RegisteredText(index int) (string, error) {
 	c := index
-	if c >= f.Len() {
+	if c < 0 || c >= f.Len() {
 		return "", ErrOutOfBounds
 	}
 	return f.Friends.User[c].Registered.Text, nil
@@ -172,7 +166,7 @@ func (r *FriendRegistered) GetText() string {
 // The index must be in the range [0, f.Len()).
 func (f *FriendsData) RealName(index int) (string, error) {
 	c := index
-	if c >= f.Len() {
+	if c < 0 || c >= f.Len() {
 		return "", ErrOutOfBounds
 	}
 	return f.Friends.User[c].RealName, nil
@@ -182,7 +176,7 @@ func (f *FriendsData) RealName(index int) (string, error) {
 // The index must be in the range [0, f.Len()).
 func (f *FriendsData) Subscriber(index int) (string, error) {
 	c := index
-	if c >= f.Len() {
+	if c < 0 || c >= f.Len() {
 		return "", ErrOutOfBounds
 	}
 	return f.Friends.User[c].Subscriber, nil
@@ -192,7 +186,7 @@ func (f *FriendsData) Subscriber(index int) (string, error) {
 // The index must be in the range [0, f.Len()).
 func (f *FriendsData) Bootstrap(index int) (string, error) {
 	c := index
-	if c >= f.Len() {
+	if c < 0 || c >= f.Len() {
 		return "", ErrOutOfBounds
 	}
 	return f.Friends.User[c].Bootstrap, nil
@@ -202,7 +196,7 @@ func (f *FriendsData) Bootstrap(index int) (string, error) {
 // The index must be in the range [0, f.Len()).
 func (f *FriendsData) Type(index int) (string, error) {
 	c := index
-	if c >= f.Len() {
+	if c < 0 || c >= f.Len() {
 		return "", ErrOutOfBounds
 	}
 	return f.Friends.User[c].Type, nil
