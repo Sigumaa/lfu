@@ -46,6 +46,31 @@ func (c *Client) Friends(ctx context.Context, opts ...RequestOption) (*FriendsDa
 	return &result, nil
 }
 
+// User returns the name of the user whose friends are being returned.
+func (f *FriendsData) User() string {
+	return f.Friends.Attr.User
+}
+
+// TotalPages returns the total number of pages of friends.
+func (f *FriendsData) TotalPages() string {
+	return f.Friends.Attr.TotalPages
+}
+
+// Page returns the current page of friends.
+func (f *FriendsData) Page() string {
+	return f.Friends.Attr.Page
+}
+
+// PerPage returns the number of friends per page.
+func (f *FriendsData) PerPage() string {
+	return f.Friends.Attr.PerPage
+}
+
+// Total returns the total number of friends.
+func (f *FriendsData) Total() string {
+	return f.Friends.Attr.Total
+}
+
 // Len returns the number of friends.
 func (f *FriendsData) Len() int {
 	return len(f.Friends.User)
