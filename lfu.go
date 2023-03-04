@@ -35,6 +35,22 @@ type Image struct {
 	Text string `json:"#text"`
 }
 
+type imageSize int
+
+const (
+	// SmallImage is the small image size.
+	SmallImage imageSize = iota
+
+	// MediumImage is the medium image size.
+	MediumImage
+
+	// LargeImage is the large image size.
+	LargeImage
+
+	// ExtraLargeImage is the extra large image size.
+	ExtraLargeImage
+)
+
 type Date struct {
 	UTS  string `json:"uts"`
 	Text string `json:"#text"`
