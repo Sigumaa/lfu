@@ -5,6 +5,11 @@ import (
 	"errors"
 )
 
+var (
+	// ErrNoPlayingTrack is returned when the user is not currently listening to any track.
+	ErrNoPlayingTrack = errors.New("no track is currently playing")
+)
+
 type RecentTracksData struct {
 	RecentTracks RecentTracks `json:"recenttracks"`
 }
@@ -73,36 +78,27 @@ func (c *Client) NowPlayingTrack(ctx context.Context) (*NowPlayingTrack, error) 
 	if err := c.get(ctx, url, &result); err != nil {
 		return nil, err
 	}
-	var npt NowPlayingTrack
-	if result.RecentTracks.Track[0].Attr.NowPlaying == "true" {
-		npt.Artist = result.RecentTracks.Track[0].Artist
-		npt.Streamable = result.RecentTracks.Track[0].Streamable
-		npt.Image = result.RecentTracks.Track[0].Image
-		npt.Mbid = result.RecentTracks.Track[0].Mbid
-		npt.Album = result.RecentTracks.Track[0].Album
-		npt.Name = result.RecentTracks.Track[0].Name
-		npt.URL = result.RecentTracks.Track[0].URL
-		npt.Date = result.RecentTracks.Track[0].Date
-		return &npt, nil
-	}
-	return nil, errors.New("no track is currently playing")
+	return result.NowPlayingTrack()
 }
 
 // NowPlayingTrack returns the currently playing track.
 func (r *RecentTracksData) NowPlayingTrack() (*NowPlayingTrack, error) {
-	var npt NowPlayingTrack
-	if r.RecentTracks.Track[0].Attr.NowPlaying == "true" {
-		npt.Artist = r.RecentTracks.Track[0].Artist
-		npt.Streamable = r.RecentTracks.Track[0].Streamable
-		npt.Image = r.RecentTracks.Track[0].Image
-		npt.Mbid = r.RecentTracks.Track[0].Mbid
-		npt.Album = r.RecentTracks.Track[0].Album
-		npt.Name = r.RecentTracks.Track[0].Name
-		npt.URL = r.RecentTracks.Track[0].URL
-		npt.Date = r.RecentTracks.Track[0].Date
-		return &npt, nil
+	if len(r.RecentTracks.Track) == 0 {
+		return nil, ErrNoPlayingTrack
 	}
-	return nil, errors.New("no track is currently playing")
+	if r.RecentTracks.Track[0].Attr.NowPlaying != "true" {
+		return nil, ErrNoPlayingTrack
+	}
+	return &NowPlayingTrack{
+		Artist:     r.RecentTracks.Track[0].Artist,
+		Streamable: r.RecentTracks.Track[0].Streamable,
+		Image:      r.RecentTracks.Track[0].Image,
+		Mbid:       r.RecentTracks.Track[0].Mbid,
+		Album:      r.RecentTracks.Track[0].Album,
+		Name:       r.RecentTracks.Track[0].Name,
+		URL:        r.RecentTracks.Track[0].URL,
+		Date:       r.RecentTracks.Track[0].Date,
+	}, nil
 }
 
 // ArtistName returns the name of the artist.
