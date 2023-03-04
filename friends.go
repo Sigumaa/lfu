@@ -153,6 +153,17 @@ func (f *FriendsData) Registered(index int) (FriendRegistered, error) {
 	return f.Friends.User[c].Registered, nil
 }
 
+// GetUnixTime returns the unix time of the friend registration
+func (r *FriendRegistered) GetUnixTime() string {
+	return r.UnixTime
+}
+
+// GetText returns the text of the friend registration
+// Example: 2020-12-27 05:08
+func (r *FriendRegistered) GetText() string {
+	return r.Text
+}
+
 // RealName returns the real name of the friend at the given index.
 // The index must be in the range [0, f.Len()).
 func (f *FriendsData) RealName(index int) (string, error) {
