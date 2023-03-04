@@ -2,6 +2,12 @@ package lfu
 
 import (
 	"context"
+	"errors"
+)
+
+var (
+	// ErrOutOfBounds is returned when the index is out of bounds.
+	ErrOutOfBounds = errors.New("index out of bounds")
 )
 
 type FriendsData struct {
@@ -44,4 +50,145 @@ func (c *Client) Friends(ctx context.Context, opts ...RequestOption) (*FriendsDa
 		return nil, err
 	}
 	return &result, nil
+}
+
+// Len returns the number of friends.
+func (f *FriendsData) Len() int {
+	return len(f.Friends.User)
+}
+
+// Name returns the name of the friend at the given index.
+// The index must be in the range [0, f.Len()).
+func (f *FriendsData) Name(index int) (string, error) {
+	c := index
+	if c >= f.Len() {
+		return "", ErrOutOfBounds
+	}
+	return f.Friends.User[c].Name, nil
+}
+
+// URL returns the URL of the friend at the given index.
+// The index must be in the range [0, f.Len()).
+func (f *FriendsData) URL(index int) (string, error) {
+	c := index
+	if c >= f.Len() {
+		return "", ErrOutOfBounds
+	}
+	return f.Friends.User[c].URL, nil
+}
+
+// Country returns the country of the friend at the given index.
+// The index must be in the range [0, f.Len()).
+func (f *FriendsData) Country(index int) (string, error) {
+	c := index
+	if c >= f.Len() {
+		return "", ErrOutOfBounds
+	}
+	return f.Friends.User[c].Country, nil
+}
+
+// Playlists returns the number of playlists of the friend at the given index.
+// The index must be in the range [0, f.Len()).
+func (f *FriendsData) Playlists(index int) (string, error) {
+	c := index
+	if c >= f.Len() {
+		return "", ErrOutOfBounds
+	}
+	return f.Friends.User[c].Playlists, nil
+}
+
+// PlayCount returns the number of plays of the friend at the given index.
+// The index must be in the range [0, f.Len()).
+func (f *FriendsData) PlayCount(index int) (string, error) {
+	c := index
+	if c >= f.Len() {
+		return "", ErrOutOfBounds
+	}
+	return f.Friends.User[c].PlayCount, nil
+}
+
+// Image returns the []Image of the friend at the given index.
+// The index must be in the range [0, f.Len()).
+func (f *FriendsData) Image(index int) ([]Image, error) {
+	c := index
+	if c >= f.Len() {
+		return nil, ErrOutOfBounds
+	}
+	return f.Friends.User[c].Image, nil
+}
+
+type imageSize int
+
+const (
+	// SmallImage is the small image size.
+	SmallImage imageSize = iota
+
+	// MediumImage is the medium image size.
+	MediumImage
+
+	// LargeImage is the large image size.
+	LargeImage
+
+	// ExtraLargeImage is the extra large image size.
+	ExtraLargeImage
+)
+
+// ImageURL returns the URL of the image of the friend at the given index.
+// The index must be in the range [0, 4). small, medium, large, extralarge
+func (f *FriendsData) ImageURL(index int, size imageSize) (string, error) {
+	c := index
+	if c >= f.Len() {
+		return "", ErrOutOfBounds
+	}
+	return f.Friends.User[c].Image[size].Text, nil
+}
+
+// Registered returns the registration date of the friend at the given index.
+// The index must be in the range [0, f.Len()).
+func (f *FriendsData) Registered(index int) (FriendRegistered, error) {
+	c := index
+	if c >= f.Len() {
+		return FriendRegistered{}, ErrOutOfBounds
+	}
+	return f.Friends.User[c].Registered, nil
+}
+
+// RealName returns the real name of the friend at the given index.
+// The index must be in the range [0, f.Len()).
+func (f *FriendsData) RealName(index int) (string, error) {
+	c := index
+	if c >= f.Len() {
+		return "", ErrOutOfBounds
+	}
+	return f.Friends.User[c].RealName, nil
+}
+
+// Subscriber returns the subscriber status of the friend at the given index.
+// The index must be in the range [0, f.Len()).
+func (f *FriendsData) Subscriber(index int) (string, error) {
+	c := index
+	if c >= f.Len() {
+		return "", ErrOutOfBounds
+	}
+	return f.Friends.User[c].Subscriber, nil
+}
+
+// Bootstrap returns the bootstrap status of the friend at the given index.
+// The index must be in the range [0, f.Len()).
+func (f *FriendsData) Bootstrap(index int) (string, error) {
+	c := index
+	if c >= f.Len() {
+		return "", ErrOutOfBounds
+	}
+	return f.Friends.User[c].Bootstrap, nil
+}
+
+// Type returns the type of the friend at the given index.
+// The index must be in the range [0, f.Len()).
+func (f *FriendsData) Type(index int) (string, error) {
+	c := index
+	if c >= f.Len() {
+		return "", ErrOutOfBounds
+	}
+	return f.Friends.User[c].Type, nil
 }
