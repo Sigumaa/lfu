@@ -117,22 +117,6 @@ func (f *FriendsData) Image(index int) ([]Image, error) {
 	return f.Friends.User[c].Image, nil
 }
 
-type imageSize int
-
-const (
-	// SmallImage is the small image size.
-	SmallImage imageSize = iota
-
-	// MediumImage is the medium image size.
-	MediumImage
-
-	// LargeImage is the large image size.
-	LargeImage
-
-	// ExtraLargeImage is the extra large image size.
-	ExtraLargeImage
-)
-
 // ImageURL returns the URL of the image of the friend at the given index.
 // The index must be in the range [0, 4). small, medium, large, extralarge
 func (f *FriendsData) ImageURL(index int, size imageSize) (string, error) {
@@ -151,6 +135,26 @@ func (f *FriendsData) Registered(index int) (FriendRegistered, error) {
 		return FriendRegistered{}, ErrOutOfBounds
 	}
 	return f.Friends.User[c].Registered, nil
+}
+
+// RegisteredUnixTime returns the unix time of the friend registration
+// The index must be in the range [0, f.Len()).
+func (f *FriendsData) RegisteredUnixTime(index int) (string, error) {
+	c := index
+	if c >= f.Len() {
+		return "", ErrOutOfBounds
+	}
+	return f.Friends.User[c].Registered.UnixTime, nil
+}
+
+// RegisteredText returns the text of the friend registration
+// The index must be in the range [0, f.Len()).
+func (f *FriendsData) RegisteredText(index int) (string, error) {
+	c := index
+	if c >= f.Len() {
+		return "", ErrOutOfBounds
+	}
+	return f.Friends.User[c].Registered.Text, nil
 }
 
 // GetUnixTime returns the unix time of the friend registration
