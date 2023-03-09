@@ -102,4 +102,4 @@ more methods
 - [ ] user.getWeeklyAlbumChart
 - [ ] user.getWeeklyArtistChart
 - [ ] user.getWeeklyChartList
-- [ ] user.getWeeklyTrackChart
+- [x] user.getWeeklyTrackChart
